@@ -1,0 +1,41 @@
+{
+  "name": "dsh-local-browser-search",
+  "version": "0.1.0",
+  "description": "Web search and page fetching using your LOCAL browser (Edge/Chrome) via Chrome DevTools Protocol — no API key, no cloud search. · 使用本地浏览器（Edge/Chrome）实现搜索与网页抓取，无需 API Key。",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YUANMINGXUE/dsh-search.git"
+  },
+  "homepage": "https://github.com/YUANMINGXUE/dsh-search#readme",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "test:driver": "node test/driver-test.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "browser",
+    "search",
+    "web-search",
+    "cdp",
+    "edge",
+    "chrome"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

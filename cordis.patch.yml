@@ -1,0 +1,15 @@
+# dsh bundle patch: inserts this plugin into a profile's layer stack.
+- insert:
+    - id: dsh-local-browser-search
+      name: 'dsh-local-browser-search'
+      config:
+        # Launch the browser headless (true) or with a visible window (false).
+        headless: true
+        # Default search engine: bing | duckduckgo | google
+        engine: bing
+        # Upper bound on sources returned by one search call.
+        maxResults: 8
+        # Cooperative tool-call timeout budget in milliseconds.
+        timeoutMs: 30000
+        # Optional explicit browser executable path. Auto-detected when omitted.
+        browserPath: null
