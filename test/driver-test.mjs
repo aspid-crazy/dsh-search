@@ -1,4 +1,4 @@
-// Standalone end-to-end test for dsh-local-browser-search.
+﻿// Standalone end-to-end test for dsh-local-browser-search.
 // Launches a REAL local Edge/Chrome; needs full OS access (no harness sandbox).
 import { browserSearch, browserFetch } from '../lib/driver.js';
 import { apply } from '../lib/index.js';
@@ -52,7 +52,7 @@ try {
   };
   try {
     apply(fakeCtx, { headless: true, engine: 'bing', maxResults: 4, timeoutMs: 45000 });
-    check('plugin registered 2 tools', registered.size === 2, [...registered.keys()].join(','));
+    check('plugin registered 4 tools', registered.size === 4, [...registered.keys()].join(','));
     check('plugin added 2 prompt sections', sections.length === 2);
     const tool = registered.get('browser_search');
     check('browser_search tool exists', !!tool);
@@ -73,3 +73,4 @@ try {
 
 console.log(failures === 0 ? '\nALL TESTS PASSED' : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);
+
