@@ -1,6 +1,6 @@
 {
   "name": "dsh-local-browser-search",
-  "version": "0.1.1-kvant.2",
+  "version": "0.1.1-kvant.3",
   "description": "Web search and page fetching using your LOCAL browser (Edge/Chrome) via Chrome DevTools Protocol — no API key, no cloud search. · 使用本地浏览器（Edge/Chrome）实现搜索与网页抓取，无需 API Key。",
   "repository": {
     "type": "git",
