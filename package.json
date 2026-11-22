@@ -19,7 +19,8 @@
     "README.md"
   ],
   "scripts": {
-    "test:driver": "node test/driver-test.mjs"
+    "test:driver": "node test/driver-test.mjs",
+    "pack:kvant": "node scripts/pack-kvant.mjs"
   },
   "keywords": [
     "dsh",
