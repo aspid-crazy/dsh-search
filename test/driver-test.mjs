@@ -12,7 +12,7 @@ function check(label, cond, extra = '') {
 // ---- 1. Driver: real search on Bing ----
 try {
   const s = await browserSearch({ query: 'DeepSeek Harness', engine: 'bing', maxResults: 5, headless: true, timeoutMs: 45000 });
-  check('browser_search returned sources', Array.isArray(s.sources) && s.sources.length > 0, `count=${s.sources.length}`);
+  check('web_search returned sources', Array.isArray(s.sources) && s.sources.length > 0, `count=${s.sources.length}`);
   if (s.sources.length > 0) {
     const first = s.sources[0];
     check('first result has title', typeof first.title === 'string' && first.title.length > 0, first.title.slice(0, 60));
@@ -20,16 +20,16 @@ try {
     console.log('  sample:', JSON.stringify(first, null, 2).split('\n').slice(0, 6).join('\n  '));
   }
 } catch (e) {
-  check('browser_search (bing)', false, e.message.slice(0, 120));
+  check('web_search (bing)', false, e.message.slice(0, 120));
 }
 
 // ---- 2. Driver: fetch a page's rendered text ----
 try {
   const f = await browserFetch({ url: 'https://www.bing.com/search?q=deepseek+harness', maxChars: 3000, headless: true, timeoutMs: 45000 });
-  check('browser_fetch returned text', typeof f.text === 'string' && f.text.length > 0, `chars=${f.text.length}`);
-  check('browser_fetch finalUrl is http', /^https?:/i.test(f.finalUrl ?? ''), f.finalUrl);
+  check('web_fetch returned text', typeof f.text === 'string' && f.text.length > 0, `chars=${f.text.length}`);
+  check('web_fetch finalUrl is http', /^https?:/i.test(f.finalUrl ?? ''), f.finalUrl);
 } catch (e) {
-  check('browser_fetch', false, e.message.slice(0, 120));
+  check('web_fetch', false, e.message.slice(0, 120));
 }
 
 // ---- 3. Plugin: registration + execute through a minimal fake ctx ----
@@ -54,8 +54,8 @@ try {
     apply(fakeCtx, { headless: true, engine: 'bing', maxResults: 4, timeoutMs: 45000 });
     check('plugin registered 5 tools', registered.size === 5, [...registered.keys()].join(','));
     check('plugin added 2 prompt sections', sections.length === 2);
-    const tool = registered.get('browser_search');
-    check('browser_search tool exists', !!tool);
+    const tool = registered.get('web_search');
+    check('web_search tool exists', !!tool);
     if (tool) {
       const result = await tool.execute({ query: 'DeepSeek Harness deepseek h', engine: 'bing', maxResults: 3 }, { signal: new AbortController().signal });
       const meta = tool.output.presentationMeta({ query: 'x' }, result);

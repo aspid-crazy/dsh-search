@@ -9,8 +9,8 @@ The plugin drives the installed browser with Node.js built-ins only (`child_proc
 
 | Tool | What it does |
 | ---- | ------------ |
-| `browser_search` | Searches the web and returns organic result **titles / URLs / snippets**. Engine: `bing` (default), `duckduckgo`, or `google`. |
-| `browser_fetch`  | Opens a URL in the browser and returns the **rendered page text** — exactly what a human sees after JavaScript executes. |
+| `web_search` | Searches the web and returns organic result **titles / URLs / snippets**. Engine: `bing` (default), `duckduckgo`, or `google`. |
+| `web_fetch`  | Opens a URL in the browser and returns the **rendered page text** — exactly what a human sees after JavaScript executes. |
 
 This is useful where public search APIs are unavailable or unkeyed: the search runs
 in a real browser using your own network and cookies-free fresh profile.
